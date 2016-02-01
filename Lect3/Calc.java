@@ -63,10 +63,5 @@ public class Calc
       total = number1 / number2;
       System.out.printf("%d divided by %d is %d\n", number1, number2, total);
     }
-
-
-
-
-
   }
 }
