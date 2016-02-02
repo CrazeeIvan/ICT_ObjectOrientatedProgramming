@@ -15,6 +15,5 @@ public class P6Grosspay {
     numOfHours = input.nextDouble();
     grossPay = hourlyRate * numOfHours;
     System.out.printf("The gross pay is: %.2f.\n", grossPay);
-    System.out.println(51 % 4 * 37 + 4 % 12 + 4);
   }
 }
