@@ -1,0 +1,6 @@
+Install jdk-8u71-windows-x64.exe from: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+Go to Control Panel > System > Advanced > Environment Variables
+Under System Variables look for PATH
+open it and add ;C:\Program Files\Java\jdk1.8.0_71\bin to the end of the variable value. Make sure to include the ; at the start
+Restart your computer.
