@@ -50,7 +50,7 @@ public class FileHandler {
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("orders.txt", true))) {
 
-            bw.write("\n\n" + j._userName + "\n"  + j._referenceID + "\n" + j._type + "\n");
+            bw.write("\n\n" + j._userName + "\n"  + j._referenceID + "\n" + j._type + "\n" + j._seatType + "\n");
 
             bw.write("Journey Details:");
             for (HashMap.Entry<Integer, HashMap<String, String>> entry : j._trips.entrySet())

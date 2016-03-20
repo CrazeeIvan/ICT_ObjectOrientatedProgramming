@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.mainController">
    <children>
       <Button id="btnPreview" layoutX="82.0" layoutY="506.0" mnemonicParsing="false" onAction="#generatePreview" prefHeight="27.0" prefWidth="97.0" text="Preview" />
@@ -39,5 +42,16 @@
       <Label layoutX="456.0" layoutY="317.0" text="Booking ID" />
       <TextField id="txtPassword" fx:id="txtPassword" layoutX="442.0" layoutY="470.0" prefHeight="27.0" prefWidth="97.0" promptText="P@$$w0rd" />
       <Label layoutX="369.0" layoutY="409.0" prefHeight="55.0" prefWidth="243.0" text="Enter password and select maintenance mode to Edit Airport List." textAlignment="CENTER" wrapText="true" />
+      <FlowPane layoutX="137.0" layoutY="223.0" prefHeight="47.0" prefWidth="230.0">
+         <children>
+            <Label id="lblSeatType" text="Please select a seat type:" wrapText="true" />
+            <RadioButton id="rdoEconomy" fx:id="rdoEconomy" mnemonicParsing="false" selected="true" text="Economy">
+               <toggleGroup>
+                  <ToggleGroup fx:id="seatType" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton id="rdoBusiness" fx:id="rdoBusiness" mnemonicParsing="false" text="Business" toggleGroup="$seatType" />
+         </children>
+      </FlowPane>
    </children>
 </Pane>

@@ -23,6 +23,7 @@ public class Journey {
         _type = Type.ONEWAY;
 
 
+
         _trips = new HashMap<Integer, HashMap<String,String>>();
     }
 

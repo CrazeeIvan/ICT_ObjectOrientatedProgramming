@@ -9,3 +9,21 @@ Journey Details:
 
 2
 {Tokyo=Aires}
+
+
+Ciaran
+9f8ab1ca-3da9-4d63-ba04-aa1aaa4dc501
+1
+Business Class
+Journey Details:
+1
+{Dublin=Tokyo}
+
+
+asdf
+e448948d-085d-418c-bdce-c9f13524cbe6
+1
+Economy Class
+Journey Details:
+1
+{Dublin=Tokyo}

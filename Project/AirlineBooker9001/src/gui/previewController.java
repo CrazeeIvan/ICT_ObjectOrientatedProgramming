@@ -35,7 +35,7 @@ public class previewController
         else if (mainController.j._type == Type.JOURNEY){
             previewtype = "Journey";
         }
-        content = "Name: " + mainController.j._userName + "\n" + "Booking ID: " + mainController.j._referenceID + "\n" + "Trip Type: " + previewtype + "\n" + "Departure(s)/Destination(s): \n" + mainController.j._trips.toString() + "\n";
+        content = "Name: " + mainController.j._userName + "\n" + "Booking ID: " + mainController.j._referenceID + "\n" + "Trip Type: " + previewtype + "\n" + "Departure(s)/Destination(s): \n" + mainController.j._trips.toString() + "\n" + "Seat Type: " + mainController.j._seatType + "\n";
 
         txtAreaPreview.setText(content);
 

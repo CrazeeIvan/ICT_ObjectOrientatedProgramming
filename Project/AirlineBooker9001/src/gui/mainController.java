@@ -68,6 +68,12 @@ public class mainController
     @FXML //fx:id="rdoJourney"
     private RadioButton rdoJourney;
 
+    @FXML //fx:id="rdoEconomy"
+    private RadioButton rdoEconomy;
+
+    @FXML //fx:id="rdoBusiness"
+    private RadioButton rdoBusiness;
+
     public static Journey j;
 
     List<String> masterList;
@@ -167,8 +173,14 @@ public class mainController
 
     @FXML
     private void generatePreview(ActionEvent e) {
-
-        j = new Journey((txtId.getText()), txtName.getText().toString(), Type.BUSINESS);
+        String seatType = "";
+        if (rdoEconomy.isSelected()){
+            seatType = Type.ECONOMY;
+        }
+        else if (rdoBusiness.isSelected()){
+            seatType = Type.BUSINESS;
+        }
+        j = new Journey((txtId.getText()), txtName.getText().toString(), seatType);
         if (rdoOneway.isSelected()) {
             j._type = Type.ONEWAY;
             HashMap<String,String> trip= new HashMap<String,String>();

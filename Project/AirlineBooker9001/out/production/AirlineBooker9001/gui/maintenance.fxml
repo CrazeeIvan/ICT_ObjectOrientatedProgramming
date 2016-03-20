@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.maintenanceController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.maintenanceController">
    <children>
-      <Button id="btnCancel" fx:id="btnCancel" layoutX="161.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+      <Button id="btnBack" fx:id="btnCancel" layoutX="339.0" layoutY="437.0" mnemonicParsing="false" onAction="#cancel" text="Back" />
       <ComboBox id="cboAirport" fx:id="cboAirport" layoutX="238.0" layoutY="152.0" prefWidth="150.0" />
       <TextField id="txtAirport" fx:id="txtAirport" layoutX="230.0" layoutY="106.0" />
-      <Button id="btnAdd" fx:id="btnAdd" onAction="#addAirport" layoutX="474.0" layoutY="106.0" mnemonicParsing="false" text="Add" />
-      <Button id="btnDelete" fx:id="btnDelete" onAction="#deleteAirport" layoutX="474.0" layoutY="200.0" mnemonicParsing="false" text="Delete" />
-      <Button id="btnSaveChanges" fx:id="btnSaveChanges" onAction="#saveChanges" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" text="Save Changes" />
+      <Button id="btnAdd" fx:id="btnAdd" layoutX="474.0" layoutY="106.0" mnemonicParsing="false" onAction="#addAirport" text="Add" />
+      <Button id="btnDelete" fx:id="btnDelete" layoutX="474.0" layoutY="200.0" mnemonicParsing="false" onAction="#deleteAirport" text="Delete" />
+      <Button id="btnSaveChanges" fx:id="btnSaveChanges" layoutX="215.0" layoutY="437.0" mnemonicParsing="false" onAction="#saveChanges" text="Save Changes" />
       <Label layoutX="31.0" layoutY="86.0" prefHeight="53.0" prefWidth="185.0" text="Enter an airport and click &quot;Add&quot; to add a new airport." wrapText="true" />
       <Label layoutX="31.0" layoutY="144.0" prefHeight="64.0" prefWidth="185.0" text="Select an airport from the combobox to Edit or delete it." wrapText="true" />
+      <TextArea id="txtAreaOrders" fx:id="#txtAreaOrders" layoutX="35.0" layoutY="238.0" prefHeight="190.0" prefWidth="596.0" />
    </children>
 </Pane>

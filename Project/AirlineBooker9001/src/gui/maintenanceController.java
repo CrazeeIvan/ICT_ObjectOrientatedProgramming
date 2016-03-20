@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import utility.FileHandler;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,6 +37,9 @@ public class maintenanceController
     @FXML //fx:id="txtAirport"
     private TextField txtAirport;
 
+    @FXML //fx:id="txtAreaOrders"
+    private TextArea txtAreaOrders;
+
     List<String> masterList;
 
     @Override
@@ -54,7 +58,9 @@ public class maintenanceController
 
             }
         });
+        String content;
 
+//        txtAreaOrders.setText(content);
     }
     @FXML
     private void cancel(ActionEvent e) {
@@ -72,7 +78,18 @@ public class maintenanceController
 
     @FXML
     private void saveChanges(ActionEvent e) {
-        FileHandler.updateAirports(cboAirport.getItems());
+        try {
+            FileHandler.updateAirports(cboAirport.getItems());
+            Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+            Main.mainstage.setTitle("Airline Booker 9001®");
+            Main.mainstage.setScene(new Scene(root, 840, 680));
+            Main.mainstage.show();
+
+        }
+        catch (Exception e1) {
+            System.out.print(e1.getMessage());
+        }
+
     }
     @FXML
     private void addAirport(ActionEvent e){
