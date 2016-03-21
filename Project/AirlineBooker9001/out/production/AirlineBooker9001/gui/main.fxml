@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.mainController">
-   <children>
-      <Button id="btnPreview" layoutX="82.0" layoutY="506.0" mnemonicParsing="false" onAction="#generatePreview" prefHeight="27.0" prefWidth="97.0" text="Preview" />
-      <Button id="btnClear" fx:id="btnClear" layoutX="203.0" layoutY="506.0" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="97.0" text="Clear" />
-      <Button id="btnExit" fx:id="btnExit" layoutX="331.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="97.0" text="Exit" />
-      <Button id="btnMaintenance" fx:id="btnMaintenance" layoutX="442.0" layoutY="506.0" mnemonicParsing="false" onAction="#maintenanceMode" prefHeight="27.0" prefWidth="97.0" text="Maintenance" />
-      <CheckBox id="chkCarryOn" layoutX="251.0" layoutY="286.0" mnemonicParsing="false" text="Carry-on Luggage" />
-      <Pane layoutX="606.0" layoutY="66.0" prefHeight="157.0" prefWidth="118.0">
-         <children>
-            <RadioButton id="rdoOneway" fx:id="rdoOneway" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#selectOnewayType" selected="true" text="One-way">
-               <toggleGroup>
-                  <ToggleGroup fx:id="journeyType" />
-               </toggleGroup>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="771.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.mainController">
+  <children>
+    <Button id="btnPreview" layoutX="82.0" layoutY="506.0" mnemonicParsing="false" onAction="#generatePreview" prefHeight="27.0" prefWidth="97.0" text="Preview" />
+    <Button fx:id="btnClear" layoutX="203.0" layoutY="506.0" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="97.0" text="Clear" />
+    <Button fx:id="btnExit" layoutX="331.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="97.0" text="Exit" />
+    <Button fx:id="btnMaintenance" layoutX="442.0" layoutY="506.0" mnemonicParsing="false" onAction="#maintenanceMode" prefHeight="27.0" prefWidth="97.0" text="Maintenance" />
+    <CheckBox fx:id="chkCarryOn" layoutX="304.0" layoutY="286.0" mnemonicParsing="false" text="" />
+    <Pane layoutX="599.0" layoutY="55.0" prefHeight="125.00009999999747" prefWidth="118.0">
+      <children>
+        <RadioButton fx:id="rdoOneway" layoutX="29.0" layoutY="46.0" mnemonicParsing="false" onAction="#selectOnewayType" selected="true" text="One-way">
+          <toggleGroup>
+            <ToggleGroup fx:id="journeyType" />
+          </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="rdoReturn" layoutX="29.0" layoutY="73.0" mnemonicParsing="false" onAction="#selectReturnType" text="Return" toggleGroup="$journeyType" />
+        <RadioButton fx:id="rdoJourney" layoutX="29.0" layoutY="95.0" mnemonicParsing="false" onAction="#selectJourneyType" text="Journey" toggleGroup="$journeyType" />
+        <Label id="lblNumStops" layoutX="6.0" layoutY="0.0" prefHeight="46.0" prefWidth="112.0" text="Please select the number of stops:" wrapText="true" />
+      </children>
+    </Pane>
+    <Label id="lblDeparture" layoutX="117.0" layoutY="75.0" text="Departure" />
+    <Label id="lblDestination" layoutX="348.0" layoutY="75.0" text="Destination" />
+    <ComboBox fx:id="cboDeparture" layoutX="73.0" layoutY="92.0" prefWidth="150.0" />
+    <ComboBox fx:id="cboDestination" layoutX="304.0" layoutY="92.0" prefWidth="150.0" />
+    <Pane layoutX="35.0" layoutY="128.0" prefHeight="89.0" prefWidth="433.0">
+      <children>
+        <ComboBox fx:id="cboDestinationReturn" disable="true" layoutX="269.0" layoutY="14.0" prefHeight="27.0" prefWidth="150.0" />
+        <ComboBox fx:id="cboDepartureReturn" disable="true" layoutX="36.0" layoutY="14.0" prefWidth="150.0" />
+        <ComboBox fx:id="cboDepartureJourney" disable="true" layoutX="36.0" layoutY="48.0" prefWidth="150.0" />
+        <ComboBox fx:id="cboDestinationJourney" disable="true" layoutX="269.0" layoutY="48.0" prefWidth="150.0" />
+        <AnchorPane layoutX="36.0" layoutY="87.0" prefHeight="71.0" prefWidth="397.0">
+          <children>
+            <Label id="lblSeatType" layoutX="14.0" layoutY="14.0" text="Please select a seat type:" wrapText="true" />
+            <RadioButton fx:id="rdoEconomy" layoutX="46.0" layoutY="40.0" mnemonicParsing="false" selected="true" text="Economy">
+              <toggleGroup>
+                <ToggleGroup fx:id="seatType" />
+              </toggleGroup>
             </RadioButton>
-            <RadioButton id="rdoReturn" fx:id="rdoReturn" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#selectReturnType" text="Return" toggleGroup="$journeyType" />
-            <RadioButton id="rdoJourney" fx:id="rdoJourney" layoutX="9.0" layoutY="117.0" mnemonicParsing="false" onAction="#selectJourneyType" text="Journey" toggleGroup="$journeyType" />
-         </children>
-      </Pane>
-      <Label id="lblDeparture" layoutX="117.0" layoutY="75.0" text="Departure" />
-      <Label id="lblDestination" layoutX="348.0" layoutY="75.0" text="Destination" />
-      <ComboBox id="cboDeparture" fx:id="cboDeparture" layoutX="73.0" layoutY="92.0" prefWidth="150.0" />
-      <ComboBox id="cboDestination" fx:id="cboDestination" layoutX="304.0" layoutY="92.0" prefWidth="150.0" />
-      <Pane layoutX="35.0" layoutY="128.0" prefHeight="89.0" prefWidth="433.0">
-         <children>
-            <ComboBox id="cboDestinationReturn" fx:id="cboDestinationReturn" disable="true" layoutX="269.0" layoutY="14.0" prefHeight="27.0" prefWidth="150.0" />
-            <ComboBox id="cboDepartureReturn" fx:id="cboDepartureReturn" disable="true" layoutX="36.0" layoutY="14.0" prefWidth="150.0" />
-            <ComboBox id="cboDepartureJourney" fx:id="cboDepartureJourney" disable="true" layoutX="36.0" layoutY="48.0" prefWidth="150.0" />
-            <ComboBox id="cboDestinationJourney" fx:id="cboDestinationJourney" disable="true" layoutX="269.0" layoutY="48.0" prefWidth="150.0" />
-         </children>
-      </Pane>
-      <Button id="btnHelp" layoutX="561.0" layoutY="506.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Help" />
-      <TextField id="txtName" fx:id="txtName" layoutX="73.0" layoutY="350.0" prefHeight="27.0" prefWidth="294.0" />
-      <TextField id="txtId" fx:id="txtId" disable="true" editable="false" layoutX="383.0" layoutY="350.0" prefHeight="27.0" prefWidth="334.0" />
-      <Label layoutX="73.0" layoutY="317.0" text="Customer Name" />
-      <Label layoutX="456.0" layoutY="317.0" text="Booking ID" />
-      <TextField id="txtPassword" fx:id="txtPassword" layoutX="442.0" layoutY="470.0" prefHeight="27.0" prefWidth="97.0" promptText="P@$$w0rd" />
-      <Label layoutX="369.0" layoutY="409.0" prefHeight="55.0" prefWidth="243.0" text="Enter password and select maintenance mode to Edit Airport List." textAlignment="CENTER" wrapText="true" />
-      <FlowPane layoutX="137.0" layoutY="223.0" prefHeight="47.0" prefWidth="230.0">
-         <children>
-            <Label id="lblSeatType" text="Please select a seat type:" wrapText="true" />
-            <RadioButton id="rdoEconomy" fx:id="rdoEconomy" mnemonicParsing="false" selected="true" text="Economy">
-               <toggleGroup>
-                  <ToggleGroup fx:id="seatType" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton id="rdoBusiness" fx:id="rdoBusiness" mnemonicParsing="false" text="Business" toggleGroup="$seatType" />
-         </children>
-      </FlowPane>
-   </children>
+            <RadioButton fx:id="rdoBusiness" layoutX="145.0" layoutY="40.0" mnemonicParsing="false" text="Business" toggleGroup="$seatType" />
+            <RadioButton fx:id="rdoFirstClass" layoutX="227.0" layoutY="41.0" mnemonicParsing="false" text="First Class" toggleGroup="$seatType" />
+          </children>
+        </AnchorPane>
+      </children>
+    </Pane>
+    <Button id="btnHelp" layoutX="561.0" layoutY="506.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Help" />
+    <TextField fx:id="txtName" layoutX="73.0" layoutY="350.0" prefHeight="27.0" prefWidth="294.0" />
+    <TextField fx:id="txtId" disable="true" editable="false" layoutX="383.0" layoutY="350.0" prefHeight="27.0" prefWidth="334.0" />
+    <Label layoutX="73.0" layoutY="317.0" text="Customer Name" />
+    <Label layoutX="456.0" layoutY="317.0" text="Booking ID" />
+    <Label layoutX="369.0" layoutY="409.0" prefHeight="55.0" prefWidth="243.0" text="Enter password and select maintenance mode to Edit Airport List." textAlignment="CENTER" wrapText="true" />
+    <Label layoutX="85.0" layoutY="286.0" text="Please tick if you have carry-on luggage:" />
+    <PasswordField id="txtPassword" fx:id="txtPassword" onAction="#maintenanceMode" layoutX="442.0" layoutY="464.0" prefWidth="97.0" promptText="P@$$w0rd" />
+  </children>
 </Pane>

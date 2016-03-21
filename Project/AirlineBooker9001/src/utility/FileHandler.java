@@ -1,76 +1,36 @@
 package utility;
 
-/**
- * Created by Juan on 19/03/16.
- */
-
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextArea;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-
 public class FileHandler {
-    public static String airportsFile = "/Users/Juan/Documents/huxlley/AirlineBooker9001/src/gui/airports.csv";
-    // -File class needed to turn stringName to actual file
-    public static ArrayList<String> readAirports() {
-        // -define .csv file in app
+    public static String airportsFile = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
 
+    public static ArrayList<String> getAirports() {
         File file = new File(airportsFile);
         ArrayList<String> list = new ArrayList<String>();
-
-
-        try{
-            // read from file with Scanner class
+        try {
             Scanner inputStream = new Scanner(file);
-
-            // hashNext() loops line-by-line
-            while(inputStream.hasNext()){
-                //read single line, put in string
+            while (inputStream.hasNext()) {
                 String data = inputStream.next();
                 list.add(data);
             }
             java.util.Collections.sort(list);
-
-            // after loop, close scanner
             inputStream.close();
-
-
-        }catch (FileNotFoundException e){
-
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return list;
     }
-    public static Boolean confirmBooking(Journey j){
+
+
+    public static Boolean saveAirports(ObservableList l) {
         Boolean saved;
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("orders.txt", true))) {
-
-            bw.write("\n\n" + j._userName + "\n"  + j._referenceID + "\n" + j._type + "\n" + j._seatType + "\n");
-
-            bw.write("Journey Details:");
-            for (HashMap.Entry<Integer, HashMap<String, String>> entry : j._trips.entrySet())
-            {
-
-                bw.write("\n" + entry.getKey() + "\n" + entry.getValue() + "\n" );
-            }
-
-
-            bw.close();
-            saved = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            saved = false;
-        }
-        return saved;
-    }
-    public static Boolean updateAirports(ObservableList l){
-        Boolean saved;
-
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(airportsFile))) {
             for (Object o : l) {
                 bw.write(o.toString() + "\n");
@@ -82,5 +42,33 @@ public class FileHandler {
             saved = false;
         }
         return saved;
+    }
+    public static Boolean saveTrip(Journey j) {
+        Boolean saved;
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("orders.txt", true))) {
+            bw.write("\n\n" + "Username: " + j._userName + "\n" + "Booking ID: " + j._referenceID + "\n" + "Journey Legs: " + j._type + "\n" + "Seat Type: " + j._seatType + "\n" + "Carry-on: " + "\n" + j._carryOn);
+            bw.write("\nJourney Details:");
+            for (HashMap.Entry<Integer, HashMap<String, String>> entry : j._trips.entrySet()) {
+                bw.write("\nLeg: " + entry.getKey() + "\nDeparture/Destination:\n" + entry.getValue() + "\n");
+            }
+            bw.close();
+            saved = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            saved = false;
+        }
+        return saved;
+    }
+    public static String getTrips(){
+        String content = "";
+        try {
+            Scanner s = new Scanner(new File("orders.txt"));
+            while (s.hasNext()) {
+                content += s.nextLine().toString() + "\n";
+            }
+        } catch (FileNotFoundException ex) {
+            System.err.println(ex);
+        }
+        return content;
     }
 }

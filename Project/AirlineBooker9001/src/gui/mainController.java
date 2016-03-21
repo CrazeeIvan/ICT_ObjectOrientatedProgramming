@@ -74,6 +74,12 @@ public class mainController
     @FXML //fx:id="rdoBusiness"
     private RadioButton rdoBusiness;
 
+    @FXML //fx:id="rdoFirstClass"
+    private RadioButton rdoFirstClass;
+
+    @FXML //fx:id="chkCarryOn"
+    private CheckBox chkCarryOn;
+
     public static Journey j;
 
     List<String> masterList;
@@ -90,79 +96,53 @@ public class mainController
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        assert btnExit != null : "fx:id=\"btnExit\" was not injected: check your FXML file";
-        assert cboDeparture != null : "fx:id=\"cboDeparture\" was not injected: check your FXML file";
-
         txtPassword.setText("P@$$w0rd");
-
-
-
-        masterList = utility.FileHandler.readAirports();
-        clonedList.addAll(masterList);
-
+        masterList = FileHandler.getAirports();
         departureList.addAll(masterList);
-        destinationList.addAll(masterList);
-        departureReturnList.addAll(masterList);
-        destinationReturnList.addAll(masterList);
-        departureJourneyList.addAll(masterList);
-        destinationJourneyList.addAll(masterList);
-
-
-
         cboDeparture.getItems().clear();
         cboDeparture.setItems(FXCollections.observableList(departureList));
         cboDeparture.getSelectionModel().selectFirst();
 
+        destinationList.addAll(masterList);
         cboDestination.getItems().clear();
         cboDestination.setItems(FXCollections.observableList(destinationList));
         cboDestination.getSelectionModel().selectLast();
 
+        departureReturnList.addAll(masterList);
         cboDepartureReturn.getItems().clear();
         cboDepartureReturn.setItems(FXCollections.observableList(departureReturnList));
         cboDepartureReturn.getSelectionModel().selectFirst();
 
+        destinationReturnList.addAll(masterList);
         cboDestinationReturn.getItems().clear();
         cboDestinationReturn.setItems(FXCollections.observableList(destinationReturnList));
         cboDestinationReturn.getSelectionModel().selectLast();
 
+        departureJourneyList.addAll(masterList);
         cboDepartureJourney.getItems().clear();
         cboDepartureJourney.setItems(FXCollections.observableList(departureJourneyList));
         cboDepartureJourney.getSelectionModel().selectFirst();
 
+        destinationJourneyList.addAll(masterList);
         cboDestinationJourney.getItems().clear();
         cboDestinationJourney.setItems(FXCollections.observableList(destinationJourneyList));
         cboDestinationJourney.getSelectionModel().selectLast();
-
         initialiseNewTrip();
-
         cboDeparture.valueProperty().addListener(new ChangeListener<String>() {
             @Override public void changed (ObservableValue ov, String t, String t1){
-                //Debugging
-//                System.out.println(ov);
-//                System.out.println(t);
-//                System.out.println(t1);
                 updateDestinationList();
             }
         });
         cboDepartureReturn.valueProperty().addListener(new ChangeListener<String>() {
             @Override public void changed (ObservableValue ov, String t, String t1){
-                //Debugging
-//                System.out.println(ov);
-//                System.out.println(t);
-//                System.out.println(t1);
                 updateDestinationReturnList();
             }
         });
         cboDepartureJourney.valueProperty().addListener(new ChangeListener<String>() {
             @Override public void changed (ObservableValue ov, String t, String t1){
-                //Debugging
-//                System.out.println(ov);
-//                System.out.println(t);
-//                System.out.println(t1);
                 updateDestinationJourneyList();
             }
         });
-
     }
 
     @FXML
@@ -173,50 +153,69 @@ public class mainController
 
     @FXML
     private void generatePreview(ActionEvent e) {
-        String seatType = "";
-        if (rdoEconomy.isSelected()){
-            seatType = Type.ECONOMY;
-        }
-        else if (rdoBusiness.isSelected()){
-            seatType = Type.BUSINESS;
-        }
-        j = new Journey((txtId.getText()), txtName.getText().toString(), seatType);
-        if (rdoOneway.isSelected()) {
-            j._type = Type.ONEWAY;
-            HashMap<String,String> trip= new HashMap<String,String>();
-            trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
-            j._trips.put(Type.ONEWAY, trip);
-        } else if (rdoReturn.isSelected()) {
-            j._type = Type.RETURN;
-            HashMap<String,String> trip= new HashMap<String,String>();
-            trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
-            j._trips.put(Type.ONEWAY, trip);
-            trip = new HashMap<String, String>();
-            trip.put(cboDepartureReturn.getSelectionModel().getSelectedItem().toString(), cboDestinationReturn.getSelectionModel().getSelectedItem().toString());
-            j._trips.put(Type.RETURN, trip);
-        } else if (rdoJourney.isSelected()) {
-            j._type = Type.JOURNEY;
-            HashMap<String,String> trip= new HashMap<String,String>();
-            trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
-            j._trips.put(Type.ONEWAY, trip);
-            trip = new HashMap<String, String>();
-            trip.put(cboDepartureReturn.getSelectionModel().getSelectedItem().toString(), cboDestinationReturn.getSelectionModel().getSelectedItem().toString());
-            j._trips.put(Type.RETURN, trip);
-            trip = new HashMap<String, String>();
-            trip.put(cboDepartureJourney.getSelectionModel().getSelectedItem().toString(), cboDestinationJourney.getSelectionModel().getSelectedItem().toString());
-            j._trips.put(Type.JOURNEY, trip);
-        }
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("preview.fxml"));
-            Main.mainstage.setTitle("Airline Booker 9001®");
-            Main.mainstage.setScene(new Scene(root, 840, 680));
-            Main.mainstage.show();
+        if (txtName.getText().length()>0){
+            String seatType = "";
+            Boolean carryOn = false;
+            if (rdoEconomy.isSelected()){
+                seatType = Type.ECONOMY;
+            }
+            else if (rdoBusiness.isSelected()){
+                seatType = Type.BUSINESS;
+            }
+            else if (rdoFirstClass.isSelected()){
+                seatType = Type.FIRSTCLASS;
+            }
+            if (chkCarryOn.isSelected()){
+                carryOn = true;
+            }
+            else {
+                carryOn = false;
+            }
+            j = new Journey((txtId.getText()), txtName.getText(), seatType, carryOn);
+            if (rdoOneway.isSelected()) {
+                j._type = Type.ONEWAY;
+                HashMap<String,String> trip= new HashMap<String,String>();
+                trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
+                j._trips.put(Type.ONEWAY, trip);
+            } else if (rdoReturn.isSelected()) {
+                j._type = Type.RETURN;
+                HashMap<String,String> trip= new HashMap<String,String>();
+                trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
+                j._trips.put(Type.ONEWAY, trip);
+                trip = new HashMap<String, String>();
+                trip.put(cboDepartureReturn.getSelectionModel().getSelectedItem().toString(), cboDestinationReturn.getSelectionModel().getSelectedItem().toString());
+                j._trips.put(Type.RETURN, trip);
+            } else if (rdoJourney.isSelected()) {
+                j._type = Type.JOURNEY;
+                HashMap<String,String> trip= new HashMap<String,String>();
+                trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
+                j._trips.put(Type.ONEWAY, trip);
+                trip = new HashMap<String, String>();
+                trip.put(cboDepartureReturn.getSelectionModel().getSelectedItem().toString(), cboDestinationReturn.getSelectionModel().getSelectedItem().toString());
+                j._trips.put(Type.RETURN, trip);
+                trip = new HashMap<String, String>();
+                trip.put(cboDepartureJourney.getSelectionModel().getSelectedItem().toString(), cboDestinationJourney.getSelectionModel().getSelectedItem().toString());
+                j._trips.put(Type.JOURNEY, trip);
+            }
+            try {
 
+                Parent root = FXMLLoader.load(getClass().getResource("preview.fxml"));
+                Main.mainstage.setTitle("Airline Booker 9001®");
+                Main.mainstage.setScene(new Scene(root, 840, 680));
+                Main.mainstage.show();
+
+            }
+            catch (Exception e1) {
+                System.out.print(e1.getCause());
+                System.out.print(e1.toString());
+            }
         }
-        catch (Exception e1) {
-            System.out.print(e1.getCause());
-            System.out.print(e1.toString());
+        else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Please enter a customer name!");
+            Optional<ButtonType> result = alert.showAndWait();
         }
+
     }
 
 
@@ -273,32 +272,24 @@ public class mainController
     }
 
     @FXML
-    private void confirmBooking(ActionEvent e) {
-        FileHandler.confirmBooking(j);
-    }
-
-    @FXML
     private void maintenanceMode(ActionEvent e) {
-
         String password = "P@$$w0rd";
-        if (txtPassword.getText().toString().equals(password)){
+        if (txtPassword.getText().equals(password)){
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("maintenance.fxml"));
                 Main.mainstage.setTitle("Airline Booker 9001®");
                 Main.mainstage.setScene(new Scene(root, 840, 680));
                 Main.mainstage.show();
-
             }
             catch (Exception e1) {
                 System.out.print(e1.getCause());
                 System.out.print(e1.toString());
+                System.err.println(e1);
             }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Incorrect Maintenance Password!");
-//            String s = "Confirm to clear text in text field !";
-//            alert.setContentText(s);
             Optional<ButtonType> result = alert.showAndWait();
         }
     }

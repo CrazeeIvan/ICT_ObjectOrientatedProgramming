@@ -27,3 +27,131 @@ Economy Class
 Journey Details:
 1
 {Dublin=Tokyo}
+
+
+C
+bbe02a2a-2523-4b71-bb00-3b4e32ae22c2
+1
+Economy Class
+Journey Details:
+1
+{Dublin=Tokyo}
+
+
+Casdf
+23b26eb1-eb98-4057-aa94-21176a73c016
+1
+Economy Class
+Journey Details:
+1
+{Dublin=Tokyo}
+
+
+C
+48156f05-b30f-49c5-a1f7-3659d6b32474
+2
+Business Class
+Journey Details:
+1
+{London=Madrid}
+
+2
+{Madrid=London}
+
+
+Ciaran Maher
+0ee91edd-f42f-474d-87d5-5c920f444e41
+2
+Business Class
+Journey Details:
+1
+{Dublin=Tokyo}
+
+2
+{Tokyo=Dublin}
+
+
+Username: C123
+Booking ID: 4ce2ef7f-d83c-4d3f-93b1-d6097b388ed7
+Journey Legs: 2
+Seat Type: First Class
+Carry-on: trueJourney Details:
+1
+{Dublin=Tokyo}
+
+2
+{Tokyo=Dublin}
+
+
+Username: C
+Booking ID: 2ad5d0f5-33cb-46be-a3bd-96f0571f361e
+Journey Legs: 1
+Seat Type: Economy Class
+Carry-on: 
+falseJourney Details:
+Leg:1
+Departure/Destination:
+{Dublin=Tokyo}
+
+
+Username: C444
+Booking ID: a005f1de-1a50-47e7-bf35-0abf4f1d4861
+Journey Legs: 3
+Seat Type: First Class
+Carry-on: 
+trueJourney Details:
+Leg:1
+Departure/Destination:
+{Dublin=Tokyo}
+
+Leg:2
+Departure/Destination:
+{Tokyo=Dublin}
+
+Leg:3
+Departure/Destination:
+{Dublin=Liverpool}
+
+
+Username: Mr. Maher
+Booking ID: bd9a4fd6-73a0-4a84-8dee-4ff4682362a4
+Journey Legs: 3
+Seat Type: Business Class
+Carry-on: 
+true
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Chicago=Tokyo}
+
+Leg: 2
+Departure/Destination:
+{Tokyo=Liverpool}
+
+Leg: 3
+Departure/Destination:
+{Liverpool=L.A.}
+
+
+Username: Joe Bloggs
+Booking ID: bf4dc8c8-8f83-4c7d-9d10-99d43eedb96e
+Journey Legs: 1
+Seat Type: Business Class
+Carry-on: 
+false
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Chicago=Tokyo}
+
+
+Username: asdf
+Booking ID: f76dd0c8-e6c3-4485-b190-df0d839afb80
+Journey Legs: 1
+Seat Type: Economy Class
+Carry-on: 
+false
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Chicago=Tokyo}

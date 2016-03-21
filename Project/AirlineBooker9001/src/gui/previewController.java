@@ -35,20 +35,8 @@ public class previewController
         else if (mainController.j._type == Type.JOURNEY){
             previewtype = "Journey";
         }
-        content = "Name: " + mainController.j._userName + "\n" + "Booking ID: " + mainController.j._referenceID + "\n" + "Trip Type: " + previewtype + "\n" + "Departure(s)/Destination(s): \n" + mainController.j._trips.toString() + "\n" + "Seat Type: " + mainController.j._seatType + "\n";
-
+        content = "Name: " + mainController.j._userName + "\n" + "Booking ID: " + mainController.j._referenceID + "\n" + "Trip Type: " + previewtype + "\n" + "Departure(s)/Destination(s): \n" + mainController.j._trips.toString() + "\n" + "Seat Type: " + mainController.j._seatType + "\n" + "Carry-on: " + mainController.j._carryOn + "\n";
         txtAreaPreview.setText(content);
-
-//        cboDepartureJourney.valueProperty().addListener(new ChangeListener<String>() {
-//            @Override public void changed (ObservableValue ov, String t, String t1){
-                //Debugging
-//                System.out.println(ov);
-//                System.out.println(t);
-//                System.out.println(t1);
-//                updateDestinationJourneyList();
-//            }
-//        });
-
     }
 
     @FXML
@@ -60,7 +48,7 @@ public class previewController
     @FXML
     private void confirmBooking(ActionEvent e) {
         try {
-            FileHandler.confirmBooking(mainController.j);
+            FileHandler.saveTrip(mainController.j);
             Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
             Main.mainstage.setTitle("Airline Booker 9001®");
             Main.mainstage.setScene(new Scene(root, 840, 680));
@@ -68,10 +56,10 @@ public class previewController
 
         }
         catch (Exception e1) {
-            System.out.print(e1.getMessage());
+            System.out.print(e1.getCause());
+            System.out.print(e1.toString());
         }
     }
-
     @FXML
     private void cancel(ActionEvent e) {
         try {
@@ -79,17 +67,10 @@ public class previewController
             Main.mainstage.setTitle("Airline Booker 9001®");
             Main.mainstage.setScene(new Scene(root, 840, 680));
             Main.mainstage.show();
-
         }
         catch (Exception e1) {
-            System.out.print(e1.getMessage());
+            System.out.print(e1.getCause());
+            System.out.print(e1.toString());
         }
     }
-
-
-    @FXML
-    private void savePreview(ActionEvent e, Journey j) {
-
-    }
-
 }

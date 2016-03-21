@@ -9,15 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import utility.FileHandler;
-
-import java.awt.*;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
 
 public class maintenanceController
         implements Initializable {
@@ -27,6 +25,9 @@ public class maintenanceController
 
     @FXML //fx:id="btnSaveChanges"
     private Button btnSaveChanges;
+
+    @FXML //fx:id="btnAdd"
+    private Button btnAdd;
 
     @FXML //fx:id="btnDelete"
     private Button btnDelete;
@@ -40,27 +41,23 @@ public class maintenanceController
     @FXML //fx:id="txtAreaOrders"
     private TextArea txtAreaOrders;
 
-    List<String> masterList;
-
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        masterList = utility.FileHandler.readAirports();
+        List<String> masterList;
+        masterList = utility.FileHandler.getAirports();
         cboAirport.getItems().clear();
         cboAirport.setItems(FXCollections.observableList(masterList));
         cboAirport.getSelectionModel().selectFirst();
+        txtAirport.setText(cboAirport.getSelectionModel().getSelectedItem().toString());
         cboAirport.valueProperty().addListener(new ChangeListener<String>() {
             @Override public void changed (ObservableValue ov, String t, String t1){
-//                Debugging
-//                System.out.println(ov);
-//                System.out.println(t);
-//                System.out.println(t1);
                 txtAirport.setText(cboAirport.getSelectionModel().getSelectedItem().toString());
-
+                txtAirport.setDisable(true);
             }
         });
         String content;
-
-//        txtAreaOrders.setText(content);
+        content = FileHandler.getTrips();
+        txtAreaOrders.setText(content);
     }
     @FXML
     private void cancel(ActionEvent e) {
@@ -69,35 +66,41 @@ public class maintenanceController
             Main.mainstage.setTitle("Airline Booker 9001®");
             Main.mainstage.setScene(new Scene(root, 840, 680));
             Main.mainstage.show();
-
         }
         catch (Exception e1) {
-            System.out.print(e1.getMessage());
+            System.out.print(e1.getCause());
+            System.out.print(e1.toString());
         }
     }
-
     @FXML
     private void saveChanges(ActionEvent e) {
         try {
-            FileHandler.updateAirports(cboAirport.getItems());
+            FileHandler.saveAirports(cboAirport.getItems());
             Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
             Main.mainstage.setTitle("Airline Booker 9001®");
             Main.mainstage.setScene(new Scene(root, 840, 680));
             Main.mainstage.show();
-
         }
         catch (Exception e1) {
-            System.out.print(e1.getMessage());
+            System.out.print(e1.getCause());
+            System.out.print(e1.toString());
         }
-
     }
     @FXML
     private void addAirport(ActionEvent e){
-        cboAirport.getItems().add(txtAirport.getText().toString());
+        if (cboAirport.getItems().contains(txtAirport.getText())){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Airport already exists!");
+            Optional<ButtonType> result = alert.showAndWait();
+        }
+        else {
+            cboAirport.getItems().add(txtAirport.getText());
+        }
     }
     @FXML
     private void deleteAirport(ActionEvent e){
-        cboAirport.getItems().remove(txtAirport.getText().toString());
-        cboAirport.getSelectionModel().selectFirst();
+        cboAirport.getSelectionModel().clearSelection();
+        cboAirport.getItems().remove(txtAirport.getText());
+        txtAirport.setText("");
     }
 }

@@ -15,14 +15,8 @@ public static Stage mainstage;
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         primaryStage.setTitle("Airline Booker 9001®");
         primaryStage.setScene(new Scene(root, 840, 680));
-
         primaryStage.show();
-
-
     }
-
-
-
     public static void main(String[] args) {
         launch(args);
     }
