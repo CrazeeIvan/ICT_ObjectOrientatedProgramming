@@ -214,7 +214,7 @@ public class mainController
             }
         }
         else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Please enter a customer name!");
             Optional<ButtonType> result = alert.showAndWait();
         }
@@ -315,9 +315,8 @@ public class mainController
             }
         }
         else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Incorrect Maintenance Password!");
-            Optional<ButtonType> result = alert.showAndWait();
         }
     }
     private void initialiseNewTrip(){

@@ -9,7 +9,8 @@ import java.util.Scanner;
 
 public class FileHandler {
     public static String airportsFile = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
-
+    public static String helpFilePath = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\help.txt";
+    public static String ordersFilePath = "orders.txt";
     public static ArrayList<String> getAirports() {
         File file = new File(airportsFile);
         ArrayList<String> list = new ArrayList<String>();
@@ -26,8 +27,6 @@ public class FileHandler {
         }
         return list;
     }
-
-
     public static Boolean saveAirports(ObservableList l) {
         Boolean saved;
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(airportsFile))) {
@@ -44,7 +43,7 @@ public class FileHandler {
     }
     public static Boolean saveTrip(Journey j) {
         Boolean saved;
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("orders.txt", true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ordersFilePath, true))) {
             bw.write("\n\n" + "Username: " + j._userName + "\n" + "Booking ID: " + j._referenceID + "\n" + "Journey Legs: " + j._type + "\n" + "Seat Type: " + j._seatType + "\n" + "Carry-on: " + "\n" + j._carryOn);
             bw.write("\nJourney Details:");
             for (HashMap.Entry<Integer, HashMap<String, String>> entry : j._trips.entrySet()) {
@@ -72,9 +71,7 @@ public class FileHandler {
     }
 
     public static String getHelp() {
-        String helpFilePath = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\help.txt";
         String message = "";
-
 
         try {
             File file = new File(helpFilePath);
@@ -85,12 +82,10 @@ public class FileHandler {
                 message += input.nextLine() + "\n";
             }
             input.close();
-
         } catch (Exception e) {
             System.out.print(e.getCause());
             System.out.print(e.toString());
         }
-
         return message;
     }
 }

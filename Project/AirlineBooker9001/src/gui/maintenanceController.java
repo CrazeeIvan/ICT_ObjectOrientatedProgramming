@@ -93,16 +93,22 @@ public class maintenanceController
     @FXML
     private void addAirport(ActionEvent e){
         if (cboAirport.getItems().contains(txtAirport.getText())){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Airport already exists!");
             Optional<ButtonType> result = alert.showAndWait();
         }
-        else {
-            cboAirport.getItems().add(txtAirport.getText());
-            Collections.sort(cboAirport.getItems());
-            cboAirport.setValue(txtAirport.getText());
-
+        else if (txtAirport.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Airport name cannot be blank!");
+            Optional<ButtonType> result = alert.showAndWait();
         }
+        else {
+                cboAirport.getItems().add(txtAirport.getText());
+                Collections.sort(cboAirport.getItems());
+                cboAirport.setValue(txtAirport.getText());
+
+            }
+
     }
     @FXML
     private void deleteAirport(ActionEvent e){
