@@ -1,7 +1,6 @@
 package utility;
 
 import javafx.collections.ObservableList;
-import javafx.scene.control.TextArea;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class FileHandler {
-    public static String airportsFile = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
+    public static String airportsFile = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
 
     public static ArrayList<String> getAirports() {
         File file = new File(airportsFile);
@@ -70,5 +69,28 @@ public class FileHandler {
             System.err.println(ex);
         }
         return content;
+    }
+
+    public static String getHelp() {
+        String helpFilePath = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\help.txt";
+        String message = "";
+
+
+        try {
+            File file = new File(helpFilePath);
+
+            Scanner input = new Scanner(file);
+
+            while (input.hasNextLine()) {
+                message += input.nextLine() + "\n";
+            }
+            input.close();
+
+        } catch (Exception e) {
+            System.out.print(e.getCause());
+            System.out.print(e.toString());
+        }
+
+        return message;
     }
 }

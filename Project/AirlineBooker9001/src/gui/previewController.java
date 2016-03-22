@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import utility.FileHandler;
-import utility.Journey;
 import utility.Type;
 
 import java.net.URL;

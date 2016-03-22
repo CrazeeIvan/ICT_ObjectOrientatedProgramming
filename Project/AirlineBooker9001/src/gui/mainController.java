@@ -11,6 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utility.FileHandler;
 import utility.Journey;
 import utility.Type;
@@ -31,6 +34,9 @@ public class mainController
 
     @FXML //fx:id="btnConfirm"
     private Button btnConfirm;
+
+    @FXML //fx:id="btnHelp"
+    private Button btnHelp;
 
     @FXML //fx:id="cboDeparture"
     private ComboBox cboDeparture;
@@ -93,9 +99,9 @@ public class mainController
 
     ArrayList<String> clonedList = new ArrayList<String>();
 
-
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+
         txtPassword.setText("P@$$w0rd");
         masterList = FileHandler.getAirports();
         departureList.addAll(masterList);
@@ -168,9 +174,6 @@ public class mainController
             if (chkCarryOn.isSelected()){
                 carryOn = true;
             }
-            else {
-                carryOn = false;
-            }
             j = new Journey((txtId.getText()), txtName.getText(), seatType, carryOn);
             if (rdoOneway.isSelected()) {
                 j._type = Type.ONEWAY;
@@ -218,6 +221,30 @@ public class mainController
 
     }
 
+    @FXML
+    private void showHelp(){
+        try {
+
+            Parent root1 = FXMLLoader.load(getClass().getResource("test.fxml"));
+            if (root1 == null){
+                System.out.print("Root1 did it!");
+            }
+            Stage stage = new Stage();
+            if (stage == null) {
+                System.out.print("stage did it!");
+            }
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("ABC");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e) {
+            System.out.print(e.getCause() + "\n");
+            System.out.print(e.getMessage() + "\n");
+            System.out.print(e.getStackTrace().toString() + "\n");
+        }
+
+    }
 
     @FXML
     private void selectJourneyType(ActionEvent e) {

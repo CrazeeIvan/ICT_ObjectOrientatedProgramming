@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="771.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.mainController">
   <children>
-    <Button id="btnPreview" layoutX="82.0" layoutY="506.0" mnemonicParsing="false" onAction="#generatePreview" prefHeight="27.0" prefWidth="97.0" text="Preview" />
+    <Button id="btnPreview" fx:id="btnPreview" layoutX="82.0" layoutY="506.0" mnemonicParsing="false" onAction="#generatePreview" prefHeight="27.0" prefWidth="97.0" text="Preview" />
     <Button fx:id="btnClear" layoutX="203.0" layoutY="506.0" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="97.0" text="Clear" />
     <Button fx:id="btnExit" layoutX="331.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="97.0" text="Exit" />
     <Button fx:id="btnMaintenance" layoutX="442.0" layoutY="506.0" mnemonicParsing="false" onAction="#maintenanceMode" prefHeight="27.0" prefWidth="97.0" text="Maintenance" />
@@ -48,7 +46,7 @@
         </AnchorPane>
       </children>
     </Pane>
-    <Button id="btnHelp" layoutX="561.0" layoutY="506.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Help" />
+    <Button id="btnHelp" fx:id="btnHelp" onAction="#showHelp" layoutX="561.0" layoutY="506.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Help" />
     <TextField fx:id="txtName" layoutX="73.0" layoutY="350.0" prefHeight="27.0" prefWidth="294.0" />
     <TextField fx:id="txtId" disable="true" editable="false" layoutX="383.0" layoutY="350.0" prefHeight="27.0" prefWidth="334.0" />
     <Label layoutX="73.0" layoutY="317.0" text="Customer Name" />

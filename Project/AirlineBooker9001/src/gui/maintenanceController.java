@@ -11,7 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import utility.FileHandler;
+
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -51,8 +53,10 @@ public class maintenanceController
         txtAirport.setText(cboAirport.getSelectionModel().getSelectedItem().toString());
         cboAirport.valueProperty().addListener(new ChangeListener<String>() {
             @Override public void changed (ObservableValue ov, String t, String t1){
-                txtAirport.setText(cboAirport.getSelectionModel().getSelectedItem().toString());
-                txtAirport.setDisable(true);
+                if (cboAirport.getSelectionModel().getSelectedIndex() != -1){
+                    txtAirport.setText(cboAirport.getSelectionModel().getSelectedItem().toString());
+                }
+
             }
         });
         String content;
@@ -95,6 +99,9 @@ public class maintenanceController
         }
         else {
             cboAirport.getItems().add(txtAirport.getText());
+            Collections.sort(cboAirport.getItems());
+            cboAirport.setValue(txtAirport.getText());
+
         }
     }
     @FXML

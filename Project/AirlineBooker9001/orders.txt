@@ -155,3 +155,59 @@ Journey Details:
 Leg: 1
 Departure/Destination:
 {Chicago=Tokyo}
+
+
+Username: Ciaran Maher
+Booking ID: 1ebdb450-66b4-423a-b703-07bc51030bcb
+Journey Legs: 2
+Seat Type: Business Class
+Carry-on: 
+false
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Chicago=Tokyo}
+
+Leg: 2
+Departure/Destination:
+{Tokyo=Chicago}
+
+
+Username: d
+Booking ID: 224f4299-16e7-4644-8cc5-b2441ff020d8
+Journey Legs: 3
+Seat Type: Business Class
+Carry-on: 
+true
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Boston=Tokyo}
+
+Leg: 2
+Departure/Destination:
+{L.A.=Dublin}
+
+Leg: 3
+Departure/Destination:
+{Boston=Tokyo}
+
+
+Username: Ciaran Maher
+Booking ID: 267c1a04-0ae1-48d3-9269-c20aed59e350
+Journey Legs: 3
+Seat Type: Business Class
+Carry-on: 
+true
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Tokyo=Eindhoven}
+
+Leg: 2
+Departure/Destination:
+{Eindhoven=Tokyo}
+
+Leg: 3
+Departure/Destination:
+{Boston=Tokyo}
