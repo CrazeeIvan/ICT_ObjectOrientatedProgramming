@@ -11,9 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import utility.FileHandler;
 import utility.Journey;
 import utility.Type;
@@ -102,7 +100,7 @@ public class mainController
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
-        txtPassword.setText("P@$$w0rd");
+//        txtPassword.setText("P@$$w0rd");
         masterList = FileHandler.getAirports();
         departureList.addAll(masterList);
         cboDeparture.getItems().clear();
@@ -159,9 +157,10 @@ public class mainController
 
     @FXML
     private void generatePreview(ActionEvent e) {
-        if (txtName.getText().length()>0){
+        if (txtName.getText().length()>0){ // If username is not blank
             String seatType = "";
             Boolean carryOn = false;
+            // Radio button logic for Seat type
             if (rdoEconomy.isSelected()){
                 seatType = Type.ECONOMY;
             }
@@ -171,13 +170,16 @@ public class mainController
             else if (rdoFirstClass.isSelected()){
                 seatType = Type.FIRSTCLASS;
             }
+            // Checkbox logic for Carry-on Luggage
             if (chkCarryOn.isSelected()){
                 carryOn = true;
             }
+            // Create a new journey object
             j = new Journey((txtId.getText()), txtName.getText(), seatType, carryOn);
             if (rdoOneway.isSelected()) {
                 j._type = Type.ONEWAY;
-                HashMap<String,String> trip= new HashMap<String,String>();
+                HashMap<String,String> trip= new HashMap<String,String>(); //Create a new Hashmap object
+                //Add each leg of the trip to the hashmap
                 trip.put(cboDeparture.getSelectionModel().getSelectedItem().toString(), cboDestination.getSelectionModel().getSelectedItem().toString());
                 j._trips.put(Type.ONEWAY, trip);
             } else if (rdoReturn.isSelected()) {
@@ -201,12 +203,10 @@ public class mainController
                 j._trips.put(Type.JOURNEY, trip);
             }
             try {
-
                 Parent root = FXMLLoader.load(getClass().getResource("preview.fxml"));
                 Main.mainstage.setTitle("Airline Booker 9001®");
                 Main.mainstage.setScene(new Scene(root, 840, 680));
                 Main.mainstage.show();
-
             }
             catch (Exception e1) {
                 System.out.print(e1.getCause());
@@ -223,18 +223,20 @@ public class mainController
     @FXML
     private void showHelp(){
         try {
-
-            Parent root1 = FXMLLoader.load(getClass().getResource("help.fxml"));
+            //Help button loader
+            System.out.println("1");
+            Parent root = FXMLLoader.load(getClass().getResource("help.fxml"));
             Stage stage = new Stage();
-//            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Airline Booker 9001® Help");
-            stage.setScene(new Scene(root1));
+            stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
             System.out.print(e.getCause() + "\n");
             System.out.print(e.getMessage() + "\n");
             System.out.print(e.getStackTrace().toString() + "\n");
+            e.printStackTrace();
+            System.out.print(e.toString());
+            System.err.println(e);
         }
 
     }
@@ -310,6 +312,7 @@ public class mainController
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Incorrect Maintenance Password!");
+            Optional<ButtonType> result = alert.showAndWait();
         }
     }
     private void initialiseNewTrip(){

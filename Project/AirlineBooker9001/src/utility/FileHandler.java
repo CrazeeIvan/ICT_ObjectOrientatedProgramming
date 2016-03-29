@@ -8,10 +8,17 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class FileHandler {
-    public static String airportsFile = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
-    public static String helpFilePath = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\help.txt";
+    //Edit path to the required filepath
+    public static String path = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\";
+    //home Path:
+    // C:\Users\Ciaran\Documents\ICT_ObjectOrientatedProgramming\Project\AirlineBooker9001\src\gui\
+
+    //Filenames for each of the documents we use. (Airports list = airports.csv, Help information = help.txt, New orders file = orders.txt
+    public static String airportsFile = path + "airports.csv";
+    public static String helpFilePath = path + "help.txt";
     public static String ordersFilePath = "orders.txt";
-    public static ArrayList<String> getAirports() {
+
+    public static ArrayList<String> getAirports() { //Reads airports from airports file and sorts them. Returns a list of sorted airports.
         File file = new File(airportsFile);
         ArrayList<String> list = new ArrayList<String>();
         try {
@@ -20,14 +27,14 @@ public class FileHandler {
                 String data = inputStream.next();
                 list.add(data);
             }
-            java.util.Collections.sort(list);
+            java.util.Collections.sort(list); // Sorts the list of read airports
             inputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return list;
     }
-    public static Boolean saveAirports(ObservableList l) {
+    public static Boolean saveAirports(ObservableList l) { //Save airports to the airports file
         Boolean saved;
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(airportsFile))) {
             for (Object o : l) {
@@ -41,7 +48,7 @@ public class FileHandler {
         }
         return saved;
     }
-    public static Boolean saveTrip(Journey j) {
+    public static Boolean saveTrip(Journey j) { // Format trip details and saves them to file
         Boolean saved;
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ordersFilePath, true))) {
             bw.write("\n\n" + "Username: " + j._userName + "\n" + "Booking ID: " + j._referenceID + "\n" + "Journey Legs: " + j._type + "\n" + "Seat Type: " + j._seatType + "\n" + "Carry-on: " + "\n" + j._carryOn);
@@ -57,7 +64,7 @@ public class FileHandler {
         }
         return saved;
     }
-    public static String getTrips(){
+    public static String getTrips(){ // Reads orders from orders file. Returns a string of all airports.
         String content = "";
         try {
             Scanner s = new Scanner(new File("orders.txt"));
@@ -70,9 +77,8 @@ public class FileHandler {
         return content;
     }
 
-    public static String getHelp() {
+    public static String getHelp() { // Reads help from the help file. Returns a string of help.
         String message = "";
-
         try {
             File file = new File(helpFilePath);
 
@@ -86,28 +92,6 @@ public class FileHandler {
             System.out.print(e.getCause());
             System.out.print(e.toString());
         }
-        return message;
-    }
-    //method for reading help message from file
-    public static String getHelpMessage(String nameOfFile){
-        String topic;
-        String message = "";
-        topic = nameOfFile + ".txt"; //add .txt to string so it can be passed to class File
-
-        try {
-            File file = new File(topic);
-
-            Scanner input = new Scanner(file);
-
-            while (input.hasNextLine()) {
-                message += input.nextLine() + "\n";
-            }
-            input.close();
-
-        } catch (FileNotFoundException e) {
-
-        }
-
         return message;
     }
 }

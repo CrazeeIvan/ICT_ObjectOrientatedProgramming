@@ -6,4 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane id="pneHelp" fx:id="pneHelp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="771.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.helpController" />
+<Pane fx:id="pneHelp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="771.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.helpController">
+  <children>
+    <Button id="btnClose"  fx:id="btnClose" onAction="#closeButtonAction" layoutX="14.0" layoutY="537.0" mnemonicParsing="false" text="Close" />
+    <TextArea id="txtAreaHelp" fx:id="txtAreaHelp" layoutX="14.0" layoutY="56.0" prefHeight="413.0" prefWidth="743.0" wrapText="true" />
+  </children>
+</Pane>

@@ -1,0 +1,15 @@
+Main Window:
+1. Select your departure and destination airport from the comboboxes.
+2. Select the number of legs for your trip with the radio buttons on the right hand side. (One-way: 1 Leg, Return: 2 Legs, Journey: 3 Legs)
+3. Select the type of seat you require for your trip.
+4. Please tick the checkbox if you require carry-on luggage.
+5. Enter the name to be printed on your ticket.
+6. A unique Booking ID is generated automatically
+7. Once all of your details are selected, click on "preview" to confirm your details.
+8. Once you are satisfied, click on "confirm" to save your booking.
+
+Maintenance Window:
+1. Enter the correct password to enter the maintenance mode. (Speak to your manager for the password to maintenance mode)
+2. To add a new airport, enter the name in the textbox and click "Add"
+3. To delete an existing airport, select the airport from the combobox and click "Delete"
+4. All orders are displayed in the textArea in maintenance mode.

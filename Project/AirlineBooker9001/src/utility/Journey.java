@@ -9,7 +9,6 @@ public class Journey {
     public HashMap<String, String> _stages;
     public String _seatType;
     public Boolean _carryOn;
-
     public int _type;
 
     public Journey(String ID, String userName, String seatType, Boolean carryOn){
