@@ -9,7 +9,9 @@ import java.util.Scanner;
 
 public class FileHandler {
     //Edit path to the required filepath
-    public static String path = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\";
+    public static String path = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\";
+    //College Path:
+    //  C:\Users\blue20\Documents\ICT_ObjectOrientatedProgramming\Project\AirlineBooker9001\src\gui\
     //home Path:
     // C:\Users\Ciaran\Documents\ICT_ObjectOrientatedProgramming\Project\AirlineBooker9001\src\gui\
 

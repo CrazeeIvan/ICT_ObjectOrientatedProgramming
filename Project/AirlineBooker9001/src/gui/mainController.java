@@ -99,8 +99,12 @@ public class mainController
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-
+/*****************************************************************************
+/*        Automatically sets the txtPassword field to the appropriate password.
+/*        For debugging, do not leave switched on in live client!
+ *****************************************************************************/
 //        txtPassword.setText("P@$$w0rd");
+
         masterList = FileHandler.getAirports();
         departureList.addAll(masterList);
         cboDeparture.getItems().clear();
@@ -238,7 +242,6 @@ public class mainController
             System.out.print(e.toString());
             System.err.println(e);
         }
-
     }
 
     @FXML

@@ -12,10 +12,18 @@ public static Stage mainstage;
     @Override
     public void start(Stage primaryStage) throws Exception{
         mainstage=primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        primaryStage.setTitle("Airline Booker 9001®");
-        primaryStage.setScene(new Scene(root, 840, 680));
-        primaryStage.show();
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+            primaryStage.setTitle("Airline Booker 9001®");
+            primaryStage.setScene(new Scene(root, 840, 680));
+            primaryStage.show();
+        }
+        catch (Exception e) {
+                System.out.print(e.getCause());
+                System.out.print(e.toString());
+                System.err.println(e);
+                e.printStackTrace();
+        }
     }
     public static void main(String[] args) {
         launch(args);

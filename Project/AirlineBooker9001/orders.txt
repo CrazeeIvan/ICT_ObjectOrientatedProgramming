@@ -14,3 +14,39 @@ Departure/Destination:
 Leg: 2
 Departure/Destination:
 {Tokyo=Boston}
+
+
+Username: Joe Bloggs
+Booking ID: dd1b2a12-8351-4efa-a71c-21d3d531cb96
+Journey Legs: 3
+Seat Type: First Class
+Carry-on: 
+false
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Dublin=Chicago}
+
+Leg: 2
+Departure/Destination:
+{Chicago=Eindhoven}
+
+Leg: 3
+Departure/Destination:
+{Eindhoven=Liverpool}
+
+
+Username: The 1337meister
+Booking ID: 97c35eae-0b6a-464b-8a4b-47ce39f1be21
+Journey Legs: 2
+Seat Type: Economy Class
+Carry-on: 
+false
+Journey Details:
+Leg: 1
+Departure/Destination:
+{Galway=Eindhoven}
+
+Leg: 2
+Departure/Destination:
+{Eindhoven=Galway}
