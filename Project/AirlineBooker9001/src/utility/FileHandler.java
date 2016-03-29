@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class FileHandler {
-    public static String airportsFile = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
-    public static String helpFilePath = "C:\\Users\\blue20\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\help.txt";
+    public static String airportsFile = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\airports.csv";
+    public static String helpFilePath = "C:\\Users\\Ciaran\\Documents\\ICT_ObjectOrientatedProgramming\\Project\\AirlineBooker9001\\src\\gui\\help.txt";
     public static String ordersFilePath = "orders.txt";
     public static ArrayList<String> getAirports() {
         File file = new File(airportsFile);
@@ -86,6 +86,28 @@ public class FileHandler {
             System.out.print(e.getCause());
             System.out.print(e.toString());
         }
+        return message;
+    }
+    //method for reading help message from file
+    public static String getHelpMessage(String nameOfFile){
+        String topic;
+        String message = "";
+        topic = nameOfFile + ".txt"; //add .txt to string so it can be passed to class File
+
+        try {
+            File file = new File(topic);
+
+            Scanner input = new Scanner(file);
+
+            while (input.hasNextLine()) {
+                message += input.nextLine() + "\n";
+            }
+            input.close();
+
+        } catch (FileNotFoundException e) {
+
+        }
+
         return message;
     }
 }

@@ -218,24 +218,17 @@ public class mainController
             alert.setTitle("Please enter a customer name!");
             Optional<ButtonType> result = alert.showAndWait();
         }
-
     }
 
     @FXML
     private void showHelp(){
         try {
 
-            Parent root1 = FXMLLoader.load(getClass().getResource("test.fxml"));
-            if (root1 == null){
-                System.out.print("Root1 did it!");
-            }
+            Parent root1 = FXMLLoader.load(getClass().getResource("help.fxml"));
             Stage stage = new Stage();
-            if (stage == null) {
-                System.out.print("stage did it!");
-            }
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
+//            stage.initModality(Modality.APPLICATION_MODAL);
+//            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("Airline Booker 9001® Help");
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (Exception e) {
